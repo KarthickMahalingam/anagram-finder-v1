@@ -1,21 +1,17 @@
 package com.anagram.matcher;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Scanner;
-import java.util.stream.Stream;
 
 public class AnagramFinder{
   FileReader freader;
   String fileName;
+  private Scanner sc;
   public AnagramFinder(String fileName) throws FileNotFoundException{
     freader = new FileReader(fileName); 
     this.fileName = fileName;
@@ -41,12 +37,11 @@ public class AnagramFinder{
       }      
     } 
     System.out.println("Dictionary loaded in " + (System.currentTimeMillis()- startTime));
-    Scanner sc = new Scanner(System.in);
+    sc = new Scanner(System.in);
     System.out.print("AnagramFinder>");
     String in = sc.nextLine();
     while(!in.equals("exit")) {
       long start = System.currentTimeMillis();
-      System.out.println(start);
       char[] checker = in.toLowerCase().toCharArray();
       Arrays.sort(checker);
       if(hmap.containsKey(new String(checker))) {
